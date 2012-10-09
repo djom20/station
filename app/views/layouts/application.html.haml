@@ -1,0 +1,39 @@
+!!!
+%html
+  %head
+    %title KooSquare
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Droid+Sans:400italic,600italic,400,600'
+    = stylesheet_link_tag '/assets/bootstrap.css'
+    = stylesheet_link_tag '/assets/bootstrap-responsive.css'
+
+    = stylesheet_link_tag    "application"
+
+    = csrf_meta_tags
+  %body
+    = render :partial => "layouts/header"
+    .main.inner
+      .main-inner
+        .container.content
+          = yield
+        / /container
+      / /main-inner
+    / /main
+
+    .footer
+      .footer-inner
+        .container
+          .row
+            .span12
+              =image_tag("logo-koo.png")
+              =image_tag("logo-4s.png")
+            / /span12
+          / /row
+        / /container
+      / /footer-inner
+    / /footer
+    /
+    = javascript_include_tag "application"
+    = javascript_include_tag "common/plugins/bootstrap.js"
+
+    -if content_for?(:js)
+      = yield :js
