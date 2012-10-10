@@ -64,6 +64,9 @@ Station::Application.routes.draw do
   root :to => "welcome#index"
 
   resource :welcome do
+    collection do
+      get :home
+    end
   end
 
   resources :cars do
