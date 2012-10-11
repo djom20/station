@@ -16,6 +16,8 @@ class TankingLog
   validates :date, :presence => true 
   validates :gallon, :presence => true
   validates :km, :presence => true
+  validates :car_id, :presence => true
+  validates :gas_station_id, :presence => true
 
   validates_numericality_of :cost, :gallon
   validates :km, numericality: {only_integer: true}

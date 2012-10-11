@@ -1,0 +1,25 @@
+%h1
+  = @car.model.titleize
+.row
+  .span2
+    %p
+      %b
+        = "Refueling Cost"
+      %span.badge.badge-info
+        = @car.refueling_cost
+    %p
+      %b
+        = "Refueling Times"
+      %span.badge.badge-info
+        = @car.tanking_logs.count
+  .span3
+    .btn-group
+      %a.btn.btn-success.btn-large{:href => new_tanking_url(@car.slug)}
+        %i.icon.icon-edit
+        = "Refuel it" 
+      %a.btn.btn-warning.btn-large{:href => edit_car_url(@car.slug)}
+        %i.icon.icon-edit
+        = "Edit" 
+      %a.btn.btn-danger.btn-large{:href => car_url(@car.slug), "data-method" => :delete}
+        %i.icon.icon-trash
+        = "Delete"

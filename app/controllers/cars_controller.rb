@@ -3,6 +3,7 @@ class CarsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+    @cars = Car.all || []
   end
 
   def show
@@ -13,6 +14,7 @@ class CarsController < ApplicationController
   end
 
   def create
+    #binding.pry
     @car = Car.new(params[:car])
     @car.user = current_user
 
@@ -21,7 +23,7 @@ class CarsController < ApplicationController
       redirect_to dashboard_url
     else
       flash[:notice] = "Oops, try again"
-      redirect_to :new
+      redirect_to new_car_url
     end
 
   end
@@ -30,12 +32,25 @@ class CarsController < ApplicationController
   end
 
   def update
+
   end
 
   def delete
   end
 
   def destroy
+    
+    @car = Car.by_slug(params[:id])
+
+    @car.destroy if @car
+    redirect_to cars_url
+
+  end
+
+  def preview
+    @car = Car.by_slug(params[:car_id])
+
+    render :layout => false
   end
    
 end

@@ -1,7 +1,6 @@
 class GasStation
   include Mongoid::Document
   field :name, type: String
-  field :unique_id, type: String
 
   attr_accessible :name
   
@@ -10,5 +9,6 @@ class GasStation
   has_many :tanking_logs
 
   #validations
-  validate :name, :presence => true
+  validates :name, :presence => true
+  validates :name, :uniqueness => true
 end

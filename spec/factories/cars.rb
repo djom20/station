@@ -2,10 +2,9 @@
 
 FactoryGirl.define do
   factory :car do
-    user_id 1
-    brand "MyString"
-    model "MyString"
-    year 1
-    color "MyString"
+    brand   {[:chevrolet, :mazda, :toyota, :chrysler, :hyundai, :ford].sample}
+    model   Faker::Name.name
+    year    Faker::Base.numerify("1960")
+    color   {["blanco", "negro", "azul", "rojo"].sample}
   end
 end

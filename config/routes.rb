@@ -63,19 +63,21 @@ Station::Application.routes.draw do
 
   match '/home' => 'welcome#home', :as => :dashboard
   
-  
-  #match '/:car_id/tanking/new' => 'tanking#new'
 
-  resources :cars do    
+  resources :cars do
   end
 
   resources :gas_stations, :controller => :stations do
   end
 
+
   scope '/:car_id' do
+    match '/preview' => 'cars#preview', :as => :preview_car, :via => :get
+
     resources :tanking do
     end
   end
+
 
   
 

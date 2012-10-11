@@ -34,6 +34,15 @@ class Car
     self.where(slug: slug).first
   end
 
+  def refueling_cost
+    cost = 0
+    tanking_logs.each do |tl|
+      cost+=tl.cost.to_f
+    end
+
+    cost
+  end
+
   private 
 
   def generate_slug
