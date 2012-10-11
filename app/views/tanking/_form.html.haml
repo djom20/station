@@ -1,0 +1,28 @@
+%h2 New Tanking Log
+
+= form_for(:tanking_log, :url => tanking_index_url(@car.slug), html: {class: 'form-horizontal'}) do |f|
+  .control-group
+    = f.label :gas_station, class: 'control-label'
+    .controls
+      .gas_station_list_container.pull-left
+        = f.select :gas_station, []
+      .help-inline
+        = link_to "add gas station", "#new_gas_station_modal", "data-url" => new_gas_station_url, role: 'button', class: 'btn btn-mini btn-success new_gas_station', "data-toggle" => 'modal'
+  .control-group
+    = f.label :cost, class: 'control-label'
+    .controls
+      = f.number_field :cost, :min => 0
+  .control-group
+    = f.label :date, class: 'control-label'
+    .controls
+      = f.text_field :date, class: 'datepicker'
+  .control-group
+    = f.label :gallon, class: 'control-label'
+    .controls
+      = f.number_field :gallon, :min => 0
+  .control-group
+    = f.label :km, class: 'control-label'
+    .controls
+      = f.number_field :km
+  
+  %div= f.submit "Create"

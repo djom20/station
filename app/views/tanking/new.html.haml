@@ -1,0 +1,16 @@
+= render :partial => "form"
+
+-content_for :modal do
+  #new_gas_station_modal.modal.hide.fade
+    .modal-header
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+      %h3 Add Gas Station
+    .modal-body
+      = render :partial => "stations/form"
+    .modal-footer
+      %a.btn{:href => "#", "data-dismiss" => "modal"} Close
+      %a.btn.btn-primary.create_gas_station{:href => gas_stations_url, "data-dismiss" => "modal"} Save
+
+-content_for :js do
+  :javascript
+    Tanking.getGasStations();
