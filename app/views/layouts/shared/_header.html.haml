@@ -12,11 +12,26 @@
         -if user_signed_in?
           %ul.nav
             %li
-              %a{:href => home_welcome_path}
+              %a{:href => dashboard_url}
                 = "Home"
             %li
               %a{:href => "#"}
                 = "Stats"
+          %ul.nav
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown"}
+                = "Cars"
+                %b.caret
+              %ul.dropdown-menu
+                -current_user.cars.each do |c|
+                  %li
+                    %a{href: car_page_url(c.slug)}
+                      = "#{c.brand} - #{c.model} - #{c.year}"
+
+                %li.divider
+                %li
+                  %a{href: new_car_url}
+                    = "New"
           %ul.nav.pull-right
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown"}

@@ -3,3 +3,12 @@
 
 en:
   hello: "Hello world"
+  enumerize:
+    car:
+      brand:
+        chevrolet: "Chevrolet"
+        mazda: "Mazda"
+        toyota: "Toyota"
+        chrysler: "Chrysler"
+        hyundai: "Hyundai"
+        ford: "Ford"

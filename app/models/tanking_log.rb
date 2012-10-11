@@ -2,7 +2,7 @@ class TankingLog
   include Mongoid::Document
   field :car_id, type: Integer
   field :cost, type: Float
-  field :date, type: DateTime
+  field :date, type: Date
   field :gallon, type: Float
   field :gas_station_id, type: Integer
   field :km, type: Integer

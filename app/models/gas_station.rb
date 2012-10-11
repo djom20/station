@@ -1,6 +1,7 @@
 class GasStation
   include Mongoid::Document
   field :name, type: String
+  field :unique_id, type: String
 
   attr_accessible :name
   

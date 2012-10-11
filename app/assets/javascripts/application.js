@@ -13,5 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require common/plugin/bootstrap-datepicker.js
 
+
+//= require common/modules/ui.js
+//= require common/initializers/ui.js
+
+//= require common/modules/tanking.js
+//= require common/initializers/tanking.js
 

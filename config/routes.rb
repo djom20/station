@@ -61,16 +61,27 @@ Station::Application.routes.draw do
 
   devise_for :users
 
-  root :to => "welcome#index"
+  match '/home' => 'welcome#home', :as => :dashboard
+  
+  
+  #match '/:car_id/tanking/new' => 'tanking#new'
 
-  resource :welcome do
-    collection do
-      get :home
+  resources :cars do    
+  end
+
+  resources :gas_stations, :controller => :stations do
+  end
+
+  scope '/:car_id' do
+    resources :tanking do
     end
   end
 
-  resources :cars do
-  end
+  
 
+  root :to => "welcome#index"
+
+  
+  match '/:car_id' => 'cars#show', :as => :car_page
 
 end

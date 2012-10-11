@@ -31,3 +31,6 @@
 
     -if content_for?(:js)
       = yield :js
+      
+    -if content_for?(:modal)
+      = yield :modal
