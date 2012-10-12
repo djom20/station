@@ -3,5 +3,7 @@
 
 -content_for :js do
   = javascript_include_tag "http://www.google.com/jsapi"
+  = javascript_include_tag "common/modules/stats.js"
   :javascript
     google.load('visualization', '1.0', {'packages':['corechart']});
+    google.setOnLoadCallback(Stats.initialize(google));
