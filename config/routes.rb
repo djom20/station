@@ -79,5 +79,11 @@ Station::Application.routes.draw do
 
   
   
+  resources :stats do
+    collection do
+      get :expense
+      get :gas_stations
+    end
+  end  
 
 end

@@ -7,5 +7,8 @@ class WelcomeController < ApplicationController
   def home
   end
 
+  def stats
+  end
+
 
 end

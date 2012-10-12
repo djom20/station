@@ -4,28 +4,38 @@ Stats = function(){
 
   function drawChart(google){
 
-    // Create the data table.
-    var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Topping');
-    data.addColumn('number', 'Slices');
-    data.addRows([
-      ['Mushrooms', 3],
-      ['Onions', 1],
-      ['Olives', 1], 
-      ['Zucchini', 1],
-      ['Pepperoni', 2]
-    ]);
+    $.getJSON("/stats/expense", function(data, textStatus, jqXHR){
+      // Create the data table.
+      var data = google.visualization.arrayToDataTable(data);
+      
 
-    // Set chart options
-    var options = {'title':'How Much Pizza I Ate Last Night',
-                   'width':400,
-                   'height':300};
+      // Set chart options
+      var options = {
+          title: 'Expenses by Car',
+          vAxis: {title: 'Car',  titleTextStyle: {color: 'red'}}
+        };
 
-    // Instantiate and draw our chart, passing in some options.
-    var chart = new google.visualization.PieChart(document.getElementById('stats_container'));
-
+      // Instantiate and draw our chart, passing in some options.
+      var chart = new google.visualization.BarChart(document.getElementById('by_car'));
+      chart.draw(data, options);
+    });
     
-    chart.draw(data, options);
+
+    $.getJSON("/stats/gas_stations", function(data, textStatus, jqXHR){
+      // Create the data table.
+      var data = google.visualization.arrayToDataTable(data);
+      
+
+      // Set chart options
+      var options = {
+          title: 'Expenses by Gas Station',
+          vAxis: {title: 'Gas Station',  titleTextStyle: {color: 'red'}}
+        };
+
+      // Instantiate and draw our chart, passing in some options.
+      var chart = new google.visualization.BarChart(document.getElementById('by_station'));
+      chart.draw(data, options);
+    });
   }
  
   return {

@@ -1,2 +1,19 @@
-#stats_container{:style => "width: 600px; height: 600px;"}
+.row
+  .span6
+    .row
+      .span3
+        %label
+          = "Expensivest station"
+        %h2
+          = GasStation.expensivest.name.titleize
+      .span3
+        %label
+          = "Where gas most yield"
+        %h2
+          = GasStation.most_yield.name.titleize
+.row
+  .span6
+    #by_car.stats_container
+    %br
+    #by_station.stats_container
 
