@@ -58,7 +58,7 @@ describe CarsController do
 
     describe "#preview" do
       it "should redirect" do
-        get :preview, {:car_id => "slug"}
+        get :preview, {:id => "slug"}
         response.redirect?.should == true
       end
     end  
@@ -85,8 +85,6 @@ describe CarsController do
         end
       end
 
-      context "with several cars" do
-      end
     end
 
     describe "#show" do
@@ -144,9 +142,19 @@ describe CarsController do
     end
 
     describe "#update" do
-      it "" do
-        put :update, {:id => 'slug'}
-        
+      before do
+        @car = FactoryGirl.create(:car, user: @user)
+      end
+
+      it "should update the car" do
+        put :update, {:id => @car.slug, :car => @car.attributes}
+        response.should redirect_to car_url(@car.slug)
+      end
+
+      it "should not update it and then redirect" do
+        id = mock('12345')
+        put :update, {:id => id, :car => @car.attributes}
+        response.should redirect_to dashboard_url
       end
     end
 
@@ -160,12 +168,12 @@ describe CarsController do
     describe "#preview" do
       
       it "should not redirect" do
-        get :preview, {:car_id => "slug"}
+        get :preview, {:id => "slug"}
         response.redirect?.should == false
       end
 
       it "" do
-        get :preview, {:car_id => "slug"}
+        get :preview, {:id => "slug"}
         
       end
     end

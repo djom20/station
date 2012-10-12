@@ -59,31 +59,25 @@ Station::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 
+  root :to => "welcome#index"
+
   devise_for :users
 
   match '/home' => 'welcome#home', :as => :dashboard
   
-
-  resources :cars do
-  end
-
   resources :gas_stations, :controller => :stations do
   end
 
-
-  scope '/:car_id' do
-    match '/preview' => 'cars#preview', :as => :preview_car, :via => :get
+  resources :cars, :path => "", :except => [:index] do
+    member do
+      get :preview
+    end
 
     resources :tanking do
     end
   end
 
-
   
-
-  root :to => "welcome#index"
-
   
-  match '/:car_id' => 'cars#show', :as => :car_page
 
 end

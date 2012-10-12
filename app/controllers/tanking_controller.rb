@@ -3,6 +3,7 @@ class TankingController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+    @tanking_logs = TankingLog.all || []
   end
 
   def show
@@ -17,7 +18,7 @@ class TankingController < ApplicationController
     @gas_station = GasStation.where(:name => params[:tanking_log][:gas_station]).first
 
     @tanking_log = TankingLog.new(params[:tanking_log])
-    @tanking_log.car = @car
+    @tanking_log.car = @car if @car
     @tanking_log.gas_station = @gas_station if @gas_station
     
     if @tanking_log.save
@@ -25,21 +26,9 @@ class TankingController < ApplicationController
       redirect_to dashboard_url
     else
       flash[:notice] = "Oops, try again"
-      redirect_to :new
+      redirect_to dashboard_url
     end
     
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def delete
-  end
-
-  def destroy
   end
 
 end

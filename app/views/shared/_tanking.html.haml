@@ -1,0 +1,21 @@
+-fields = (TankingLog.fields.keys - ["_type", "_id", "car_id", "gas_station_id", "unique_id"])
+
+.page-header
+  %h3
+    = "My Refueling"
+.row
+  .span6
+    %table.table.table-hover.table-condensed.tanking
+      %thead
+        %tr
+          -fields.each do |field|
+            %th
+              = "#{field.titleize}"
+      %tbody
+        -car.tanking_logs.each do |c|
+          %tr{"data-tanking-log-id" => c.unique_id}
+            -fields.each do |f|
+              %td
+                = c.send(f.to_sym)
+  .span5
+    #display_car

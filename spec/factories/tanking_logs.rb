@@ -2,11 +2,9 @@
 
 FactoryGirl.define do
   factory :tanking_log do
-    car_id 1
-    cost 1.5
-    date ""
-    gallon 1.5
-    gas_station_id 1
-    km 1
+    cost    Faker::Base.numerify("10")
+    date    "10/10/2012"
+    gallon  Faker::Base.numerify("10")
+    km      Faker::Base.numerify("10")
   end
 end

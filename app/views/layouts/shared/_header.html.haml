@@ -25,7 +25,7 @@
               %ul.dropdown-menu
                 -current_user.cars.each do |c|
                   %li
-                    %a{href: car_page_url(c.slug)}
+                    %a{href: car_url(c.slug)}
                       = "#{c.brand} - #{c.model} - #{c.year}"
 
                 %li.divider

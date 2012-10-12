@@ -34,6 +34,10 @@ class Car
     self.where(slug: slug).first
   end
 
+  def to_param
+    self.slug
+  end
+  
   def refueling_cost
     cost = 0
     tanking_logs.each do |tl|

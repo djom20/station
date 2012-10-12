@@ -7,10 +7,11 @@ class CarsController < ApplicationController
   end
 
   def show
-    @car = Car.by_slug(params[:car_id])
+    @car = Car.by_slug(params[:id])
   end
 
   def new
+    @car = Car.new
   end
 
   def create
@@ -29,10 +30,21 @@ class CarsController < ApplicationController
   end
 
   def edit
+    @car = Car.by_slug(params[:id])
   end
 
   def update
+    
+    @car = Car.by_slug(params[:id])
 
+    if (@car)
+      @car.update_attributes(params[:car] || [])
+      flash[:notice] = "Car was updated successfully!"
+      redirect_to car_url(@car.slug)
+    else
+      flash[:notice] = "Oops, try again"
+      redirect_to dashboard_url
+    end
   end
 
   def delete
@@ -48,7 +60,7 @@ class CarsController < ApplicationController
   end
 
   def preview
-    @car = Car.by_slug(params[:car_id])
+    @car = Car.by_slug(params[:id])
 
     render :layout => false
   end
