@@ -11,11 +11,16 @@
           -fields.each do |field|
             %th
               = "#{field.titleize}"
+          %th
+            = "Gas Station"
       %tbody
         -car.tanking_logs.each do |c|
           %tr{"data-tanking-log-id" => c.unique_id}
             -fields.each do |f|
               %td
                 = c.send(f.to_sym)
+            %td
+              = "#{c.gas_station.name}"
+
   .span5
     #display_car

@@ -12,8 +12,9 @@
           .well
             .row
               .span3
-                %h2
-                  = "#{c.brand.titleize} #{c.model.titleize}"
+                %a{:href => car_url(c)}
+                  %h2
+                    = "#{c.brand.titleize} #{c.model.titleize}"
             .row
               .span3
                 %p
@@ -28,13 +29,16 @@
                     = c.tanking_logs.count
               .span3
                 .btn-group
-                  %a.btn{:href => new_car_tanking_url(c.slug)}
-                    %i.icon.icon-edit
+                  %a.btn.btn-mini{:href => new_car_tanking_url(c.slug)}
+                    %i.icon.icon-retweet
                     = "Refuel it" 
-                  %a.btn{:href => edit_car_url(c.slug)}
+                  %a.btn.btn-mini{:href => car_url(c.slug)}
+                    %i.icon.icon-list-alt
+                    = "Historic" 
+                  %a.btn.btn-mini{:href => edit_car_url(c.slug)}
                     %i.icon.icon-edit
                     = "Edit" 
-                  %a.btn{:href => car_url(c.slug), "data-method" => :delete}
+                  %a.btn.btn-mini{:href => car_url(c.slug), "data-method" => :delete}
                     %i.icon.icon-trash
                     = "Delete"
   .span6
@@ -44,4 +48,5 @@
           = "Stats"
     .row
       = render :partial => "shared/cars_stats"
+
 

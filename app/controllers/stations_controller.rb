@@ -26,6 +26,13 @@ class StationsController < ApplicationController
     end
   end
 
+  def tanking_logs
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render :json => @stations}
+    end
+  end
+
   def edit
   end
 
