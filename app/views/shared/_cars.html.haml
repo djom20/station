@@ -1,32 +1,47 @@
 -fields = (Car.fields.keys - ["_type", "_id", "user_id", "slug"])
+.row
+  .span6
+    .row    
+      .page-header
+        %h3
+          = "My cars"
 
--current_user.cars.each do |c|
-  .span3
-    .well
-      .row
+    .row
+      -current_user.cars.each do |c|
         .span3
-          %h1
-            = "#{c.brand.titleize} #{c.model.titleize}"
-      .row
-        .span3
-          %p
-            %b
-              = "Refueling Cost"
-            %span.badge.badge-info
-              = c.refueling_cost
-          %p
-            %b
-              = "Refueling Times"
-            %span.badge.badge-info
-              = c.tanking_logs.count
-        .span3
-          .btn-group
-            %a.btn{:href => new_car_tanking_url(c.slug)}
-              %i.icon.icon-edit
-              = "Refuel it" 
-            %a.btn{:href => edit_car_url(c.slug)}
-              %i.icon.icon-edit
-              = "Edit" 
-            %a.btn{:href => car_url(c.slug), "data-method" => :delete}
-              %i.icon.icon-trash
-              = "Delete"
+          .well
+            .row
+              .span3
+                %h2
+                  = "#{c.brand.titleize} #{c.model.titleize}"
+            .row
+              .span3
+                %p
+                  %b
+                    = "Refueling Cost"
+                  %span.badge.badge-info
+                    = c.refueling_cost
+                %p
+                  %b
+                    = "Refueling Times"
+                  %span.badge.badge-info
+                    = c.tanking_logs.count
+              .span3
+                .btn-group
+                  %a.btn{:href => new_car_tanking_url(c.slug)}
+                    %i.icon.icon-edit
+                    = "Refuel it" 
+                  %a.btn{:href => edit_car_url(c.slug)}
+                    %i.icon.icon-edit
+                    = "Edit" 
+                  %a.btn{:href => car_url(c.slug), "data-method" => :delete}
+                    %i.icon.icon-trash
+                    = "Delete"
+  .span6
+    .row    
+      .page-header
+        %h3
+          = "Stats"
+    .row
+      = render :partial => "shared/cars_stats"
+
