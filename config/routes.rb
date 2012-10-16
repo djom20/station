@@ -68,6 +68,7 @@ Station::Application.routes.draw do
   resources :gas_stations, :controller => :stations do
   end
 
+
   resources :cars, :path => "", :except => [:index] do
     member do
       get :preview
@@ -76,7 +77,7 @@ Station::Application.routes.draw do
     resources :tanking do
     end
   end
-
+  match '/cars' => 'cars#index', :as => :cars_index
   
   
   resources :stats do
