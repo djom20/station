@@ -3,7 +3,7 @@ class TankingController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @tanking_logs = TankingLog.all || []
+    @tanking_logs = TankingLog.all
   end
 
   def show
