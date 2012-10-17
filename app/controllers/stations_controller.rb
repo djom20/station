@@ -1,4 +1,7 @@
 class StationsController < ApplicationController
+
+  before_filter :authenticate_user!
+
   def index
     @stations = GasStation.all
 
@@ -15,7 +18,6 @@ class StationsController < ApplicationController
   end
 
   def create
-    #binding.pry
     @station = GasStation.new(params[:station])
 
     @station.save
