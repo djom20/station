@@ -15,7 +15,6 @@ class CarsController < ApplicationController
   end
 
   def create
-    #binding.pry
     @car = Car.new(params[:car])
     @car.user = current_user
 

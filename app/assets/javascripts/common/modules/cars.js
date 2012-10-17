@@ -11,6 +11,10 @@ Cars = function(){
       });
 
     });
+
+    $(self).on("click", ".btn.cars", function(e){
+      $('#car_form').validate();
+    });
   }
   return {
     initialize: initialize

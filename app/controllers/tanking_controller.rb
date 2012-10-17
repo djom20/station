@@ -14,6 +14,7 @@ class TankingController < ApplicationController
   end
 
   def create
+
     @car = Car.by_slug(params[:car_id])
     @gas_station = GasStation.where(:name => params[:tanking_log][:gas_station]).first
 

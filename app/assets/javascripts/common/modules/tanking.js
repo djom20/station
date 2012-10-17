@@ -14,6 +14,7 @@ Tanking = function(){
           "station[name]": stationName
         },
         success: function(){
+          $('#new_gas_station_modal').modal('hide')
           $('#tanking_log_gas_station').empty();
           $.getJSON('/gas_stations', function(data, textStatus, jqXHR){
             $.each(data, function(index, value){
@@ -25,11 +26,25 @@ Tanking = function(){
         },
         failure: function(){
 
+        },
+        beforeSend: function(){
+          return $('#new_station_form').valid();
         }
       });
 
       return false;
-    })
+    });
+
+    $(self).on('click', '.btn.tanking_log', function(e){
+      $('#new_tanking_log').validate({
+        rules:{
+          'tanking_log[date]': {
+            required: true,
+            dateISO: true
+          }
+        }
+      });
+    });
   }
 
   function getGasStations(){

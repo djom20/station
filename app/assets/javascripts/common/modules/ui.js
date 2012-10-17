@@ -1,7 +1,7 @@
 UI = function(){
 
   function initialize(){
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({format: 'yyyy-mm-dd'});
   }
 
   return {

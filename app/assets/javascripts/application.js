@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require common/plugin/bootstrap-datepicker.js
+//= require common/plugin/jquery.validate.js
+//= require common/plugin/additional-methods.js
 
 
 //= require common/modules/ui.js

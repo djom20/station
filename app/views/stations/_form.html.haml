@@ -1,4 +1,5 @@
-.control-group
-  = label_tag "station[name]", "Name", class: 'control-label'
-  .controls
-    = text_field_tag "station[name]"
+%form#new_station_form
+  .control-group
+    = label_tag "station[name]", "Name", class: 'control-label'
+    .controls
+      = text_field_tag "station[name]", nil, class: 'required'

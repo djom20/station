@@ -1,20 +1,20 @@
-= form_for(@car, html: {class: 'form-horizontal'}) do |f|
+= form_for(@car, :url => cars_url, html: {class: 'form-horizontal', :id => 'car_form'}) do |f|
   .control-group
     = f.label :brand, class: 'control-label'
     .controls
-      = f.select :brand, Car.brand.options
+      = f.select :brand, Car.brand.options, class: 'required'
   .control-group
     = f.label :model, class: 'control-label'
     .controls
-      = f.text_field :model
+      = f.text_field :model, class: 'required'
   .control-group
     = f.label :year, class: 'control-label'
     .controls
-      = f.number_field :year, in: 1960...2013
+      = f.number_field :year, in: 1960...2013, class: 'required number'
   .control-group
     = f.label :color, class: 'control-label'
     .controls
-      = f.text_field :color
+      = f.text_field :color, class: 'required'
   
   .form-actions
-    = f.submit "Create", :class => "btn btn-primary"
+    = f.submit "Create", :class => "btn btn-primary cars"
