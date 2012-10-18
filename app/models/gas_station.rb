@@ -18,7 +18,7 @@ class GasStation
     exp = 0
     self.all.each do |gs|
       c = 0
-      (TankingLog.where(:gas_station => gs) || []).each do |tl|
+      TankingLog.where(:gas_station => gs).each do |tl|
         c+=tl.cost
       end
 
@@ -38,7 +38,7 @@ class GasStation
     exp = 0
     self.all.each do |gs|
       c = 0
-      (TankingLog.where(:gas_station => gs) || []).each do |tl|
+      TankingLog.where(:gas_station => gs).each do |tl|
         c+=tl.km
       end
 

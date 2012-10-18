@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :gas_station do
-    name Faker::Name.name
+    name {Faker::Name.name}
   end
 end
